@@ -1,0 +1,17 @@
+server:
+  port: 8001
+  context-path: /
+spring:
+  datasource:
+    name: dataSource
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/test
+    schema: classpath:schema.sql
+    username: sa
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: org.tuling.cistarter.entity
+
+logging:
+  level: info

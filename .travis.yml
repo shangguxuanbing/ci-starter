@@ -1,0 +1,16 @@
+language: java
+jdk:
+- oraclejdk8
+install:
+./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+branches:
+  only:
+  - master
+script:
+  - mvn clean compile -B -e -U
+  - mvn test
+# after_success:
+deploy:
+  provider: heroku
+  apikey: 5de26273-77b6-4a87-91ac-20fd4f933060
+  project: ci-starter
