@@ -14,7 +14,8 @@ after_success:
   - echo "====Build successfully!===="
 deploy:
   provider: heroku
-  api_key: 5de26273-77b6-4a87-91ac-20fd4f933060
+  api_key:
+    secure: 5de26273-77b6-4a87-91ac-20fd4f933060
   project: ci-starter
   on:
     all_branches: true
