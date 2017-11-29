@@ -56,6 +56,9 @@ public class DataBaseConfig {
     public ServletRegistrationBean h2ServletRegistration() {
         // add the h2 database web admin console servlet
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(new WebServlet());
+        Map<String, String> initParams = new HashMap<>();
+        initParams.put("-webAllowOthers", "true");// only used when testing.
+        registrationBean.setInitParameters(initParams);
         registrationBean.addUrlMappings("/h2/*");
         return registrationBean;
     }
