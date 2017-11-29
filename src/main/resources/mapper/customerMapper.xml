@@ -20,6 +20,12 @@
         FROM CUSTOMERS
         WHERE id = #{id}
     </select>
-    
+
+    <select id="getAll" resultMap="customer">
+        SELECT
+        <include refid="columns"/>
+        FROM CUSTOMERS
+        ORDER BY ID DESC
+    </select>
 
 </mapper>
