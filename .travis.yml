@@ -10,10 +10,13 @@ branches:
 script:
   - mvn clean compile -B -e -U
   - mvn test
-# after_success:
+after_success:
+  - echo "====Build successfully!===="
 deploy:
   provider: heroku
-  apikey: 5de26273-77b6-4a87-91ac-20fd4f933060
+  api_key: 5de26273-77b6-4a87-91ac-20fd4f933060
   project: ci-starter
   on:
     all_branches: true
+after_deploy:
+  - echo "====Deploy successfully!===="
