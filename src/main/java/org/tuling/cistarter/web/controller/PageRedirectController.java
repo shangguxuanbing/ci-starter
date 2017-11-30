@@ -23,8 +23,10 @@
  */
 package org.tuling.cistarter.web.controller;
 
+import com.google.common.collect.Lists;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by myan on 11/29/2017.
@@ -36,6 +38,14 @@ public class PageRedirectController {
     @RequestMapping("/")
     public String index() {
         return "index";
+    }
+    
+    @RequestMapping("/test")
+    public ModelAndView testMethod() {
+        ModelAndView mav = new ModelAndView("test");
+        // some other logic here.
+        mav.addObject("data", Lists.asList("1", "2", new String[]{"a", "b"}));
+        return mav;
     }
 
 }

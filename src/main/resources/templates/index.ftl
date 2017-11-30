@@ -13,6 +13,14 @@
 <body>
     <div class="container">
         <h1 class="text-center">Welcome to this CI application.</h1>
+        <div class="row">
+            <ul>
+                <li><a href="/h2-console">H2 database console</a></li>
+                <li><a href="/druid">Druid statistics view</a></li>
+            </ul>
+        </div>
     </div>
+
+    <footer class="footer panel-footer" style="bottom: 0; width: 100%; position: fixed">Copyright &copy; 2017 Michael Yan</footer>
 </body>
 </html>
