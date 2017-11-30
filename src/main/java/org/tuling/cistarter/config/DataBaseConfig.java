@@ -23,26 +23,8 @@
  */
 package org.tuling.cistarter.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.pool.ValidConnectionChecker;
-import com.alibaba.druid.support.http.StatViewServlet;
-import com.alibaba.druid.support.http.WebStatFilter;
-import com.alibaba.druid.util.JdbcUtils;
-import com.google.common.collect.Lists;
-import org.h2.server.web.WebServlet;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
 
 /**
  * Created by myan on 11/27/2017.
@@ -52,6 +34,7 @@ import java.util.Properties;
 @MapperScan("org.tuling.cistarter.web.dao")
 public class DataBaseConfig {
     
+    /*
     @Bean
     public ServletRegistrationBean h2ServletRegistration() {
         // add the h2 database web admin console servlet
@@ -62,8 +45,9 @@ public class DataBaseConfig {
         registrationBean.addUrlMappings("/h2/*");
         return registrationBean;
     }
+    */
     
-    // enable druid datasource web admin
+    /* enable druid datasource web admin
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
     public DruidDataSource dataSource() {
@@ -101,6 +85,7 @@ public class DataBaseConfig {
         return dataSource;
     }
     
+    
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
@@ -129,4 +114,5 @@ public class DataBaseConfig {
         druidRegistrationBean.setInitParameters(intParams);
         return druidRegistrationBean;
     }
+    */
 }

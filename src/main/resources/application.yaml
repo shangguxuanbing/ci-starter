@@ -1,16 +1,39 @@
 server:
   port: 8001
   context-path: /
+
 spring:
   datasource:
     name: dataSource
-    driver-class-name: org.h2.Driver
     url: jdbc:h2:~/test
     schema: classpath:schema.sql
     username: sa
+    driver-class-name: org.h2.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      validation-query: SELECT 1
+      initialSize: 5
+      max-active: 15
+      remove-abandoned: true
+      filter:
+        commons-log:
+          enabled: true
+      # enable web admin here
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        login-username: druid
+        login-password: druid
+
   freemarker:
     template-loader-path: classpath:/templates/
     content-type: text/html
+
+  h2:
+    console:
+      settings:
+        web-allow-others: true
+      enabled: true
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
