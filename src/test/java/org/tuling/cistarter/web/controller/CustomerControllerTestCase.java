@@ -96,23 +96,22 @@ public class CustomerControllerTestCase {
     }
     
     // IllegalStateException has been cast to NestedServletException by FrameworkServlet
-    @Test(expected = NestedServletException.class)
+    @Test(expected = IllegalStateException.class)
     public void testSaveCustomerWithException() throws Exception {
         Customer customer = new Customer();
-        customer.setEmail("www@gmail.com");
-        customer.setEmail("myan");
-        
+        customer.setEmail("222@173.com");
+        customer.setName("tester");
+    
+        Mockito.when(service.checkNameExist(Matchers.anyString())).thenReturn(true);
         RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/customer/save")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(customer));
-        
+    
         ResultActions result = mvc.perform(requestBuilder);
         result.andExpect(MockMvcResultMatchers.status().isOk());
     }
-    
    
-    
 }
 
 
