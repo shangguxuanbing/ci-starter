@@ -99,15 +99,14 @@ public class CustomerControllerTestCase {
     @Test(expected = NestedServletException.class)
     public void testSaveCustomerWithException() throws Exception {
         Customer customer = new Customer();
-        customer.setEmail("222@173.com");
-        customer.setName("tester");
-    
-        Mockito.when(service.checkNameExist(Matchers.anyString())).thenReturn(true);
+        customer.setEmail("www@gmail.com");
+        customer.setEmail("myan");
+        
         RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/customer/save")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(customer));
-    
+        
         ResultActions result = mvc.perform(requestBuilder);
         result.andExpect(MockMvcResultMatchers.status().isOk());
     }

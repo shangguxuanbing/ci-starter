@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.tuling.cistarter.entity.Customer;
 import org.tuling.cistarter.web.service.CustomerService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -63,7 +64,7 @@ public class CustomerController {
     }
     @RequestMapping(value = "/save", method = RequestMethod.PUT)
     public boolean saveCustomer(@RequestBody Customer customer) {
-        // we can use bean validation instead of duplicate checking here.
+        // we can use bean validation(JSR-303) instead of duplicate checking here.
         if(StringUtils.isEmpty(customer.getEmail()) ||
                 !customer.getEmail().matches("^\\s*\\w+(?:\\.{0,1}[\\w-]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\\.[a-zA-Z]+\\s*$")) {
             throw new IllegalStateException("Email invalid");
