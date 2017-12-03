@@ -96,7 +96,7 @@ public class CustomerControllerTestCase {
     }
     
     // IllegalStateException has been cast to NestedServletException by FrameworkServlet
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = NestedServletException.class)
     public void testSaveCustomerWithException() throws Exception {
         Customer customer = new Customer();
         customer.setEmail("222@173.com");
